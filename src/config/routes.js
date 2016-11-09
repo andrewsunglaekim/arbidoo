@@ -7,5 +7,6 @@ import Arbidue from '../containers/Arbidue'
 module.exports = (
   <Route path='/'component={App}>
     <Route path='/arbidue' component={Arbidue} />
+    <Route path='/arbidue/:size' component={Arbidue} />
   </Route>
 )

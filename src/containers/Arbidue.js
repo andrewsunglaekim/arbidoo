@@ -2,15 +2,18 @@ import React, {Component} from 'react'
 import Quiz from '../components/Quiz'
 import HighScoreForm from '../components/HighScoreForm'
 import Timer from '../components/Timer'
+import {Link} from 'react-router'
+import {browserHistory} from 'react-router'
+
 
 class Arbidue extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       counter:0,
       operator: "+",
       correct: 0,
-      numbers: this.getRandomNumbers(10),
+      numbers: this.getRandomNumbers(this.props.params.size),
       timerId: null,
       timer: 0
     }
@@ -60,20 +63,29 @@ class Arbidue extends Component {
     console.log(this.state)
     this.reset()
   }
-  reset(){
+  reset(size){
     this.setState({
       gameOver: false,
       counter: 0,
       correct: 0,
-      numbers: this.getRandomNumbers(10),
+      numbers: this.getRandomNumbers(size),
       timer: 0
     })
     this.startTimer()
   }
+  switchNums(){
+    console.log(this.props.params);
+    this.reset(this.props.params.size)
+  }
   render(){
+    let links = [10, 50, 100, 500, 1000].map((num) => {
+      return(
+        <Link key={num} onClick={this.switchNums.bind(this)} to={`/arbidue/${num}`}>{num}</Link>
+      )
+    })
     if(this.state.gameOver){
       return (
-        <div>
+        <div key="bob">
           <HighScoreForm
             numCorrect={this.state.correct}
             submitUser={this.submitUser.bind(this)}/>
@@ -81,12 +93,13 @@ class Arbidue extends Component {
       )
     } else {
       return (
-        <div>
+        <div key="bob">
           <Timer time={this.state.timer}/>
           <Quiz
             numbers={this.state.numbers}
             operator={this.state.operator}
             submitAnswer={this.submitAnswer.bind(this)}/>
+          {links}
         </div>
       )
     }
