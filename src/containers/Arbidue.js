@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Quiz from '../components/Quiz.js'
+import Quiz from '../components/Quiz'
 
 class Arbidue extends Component {
   constructor(){
