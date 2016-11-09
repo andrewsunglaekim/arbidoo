@@ -6,9 +6,9 @@ class Quiz extends Component {
   render(){
     return (
       <div>
-        <Number number={5}/>
-        <div id="operator">+</div>
-        <Number number={6}/>
+        <Number number={this.props.numbers[0]}/>
+        <div id="operator">{this.props.operator}</div>
+        <Number number={this.props.numbers[1]}/>
         <AnswerForm
           submitAnswer={this.props.submitAnswer}
           />
