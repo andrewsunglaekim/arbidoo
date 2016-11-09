@@ -23,14 +23,19 @@ class Arbidue extends Component {
     return [Math.floor(Math.random() * range), Math.floor(Math.random() * range)]
   }
   startTimer(){
-    let timerId = setInterval(()=>{
-      let timer = this.state.timer + 1
-      this.setState({
-        timer: timer,
-        timerId: timerId
-      })
-    }, 1000)
+		if(!this.state.timerId){
+			this.timerId = setInterval(()=>{
+				let timer = this.state.timer + 1
+				this.setState({
+					timer: timer
+				})
+			}, 1000)
+		}
   }
+	stopTimer(){
+  	clearInterval(this.timerId)		
+		this.timerId = null
+	}
   submitAnswer(answer){
     let correct = this.checkAnswer(answer) ? this.state.correct + 1 : this.state.correct
     let counter = this.state.counter + 1
@@ -42,15 +47,13 @@ class Arbidue extends Component {
     let gameOver
     if(counter >= 3){
       gameOver = true
-      clearInterval(this.state.timerId)
-      timerId = null
+      this.stopTimer()
     }
     this.setState({
       gameOver: gameOver,
       counter: counter,
       numbers: this.getRandomNumbers(10),
-      correct: correct,
-      timerId: timerId
+      correct: correct
     })
 
   }
@@ -70,17 +73,20 @@ class Arbidue extends Component {
       correct: 0,
       numbers: this.getRandomNumbers(size),
       timer: 0
-    })
-    this.startTimer()
+    }, this.startTimer())
   }
-  switchNums(){
-    console.log(this.props.params);
-    this.reset(this.props.params.size)
+  switchNums(num){
+    console.log(num)
+		this.stopTimer()
+		this.reset(num)
+  }
+  componentDidUpdate(){
+
   }
   render(){
     let links = [10, 50, 100, 500, 1000].map((num) => {
       return(
-        <Link key={num} onClick={this.switchNums.bind(this)} to={`/arbidue/${num}`}>{num}</Link>
+        <Link key={num} onClick={(e) => this.switchNums(num)} to={`/arbidue/${num}`}>{num}</Link>
       )
     })
     if(this.state.gameOver){
