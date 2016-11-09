@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import Quiz from '../components/Quiz.js'
 
 class Arbidue extends Component {
   constructor(){
@@ -9,7 +9,7 @@ class Arbidue extends Component {
   render(){
     return (
       <div>
-        I.. am arbidue!
+        <Quiz />
       </div>
     )
   }
