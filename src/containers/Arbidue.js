@@ -15,11 +15,24 @@ class Arbidue extends Component {
     return [Math.floor(Math.random() * range), Math.floor(Math.random() * range)]
   }
   submitAnswer(answer){
+    let correct = this.checkAnswer(answer) ? this.state.correct + 1 : this.state.correct
+    let counter = this.state.counter + 1
+    this.updateGame(correct, counter)
+  }
+  updateGame(correct, counter){
+    if(counter >= 10){
+      var gameOver = true
+    }
     this.setState({
-      counter: this.state.counter + 1,
-      numbers: this.getRandomNumbers(10)
+      gameOver: gameOver,
+      counter: counter,
+      numbers: this.getRandomNumbers(10),
+      correct: correct
     })
-    console.log(answer)
+
+  }
+  checkAnswer(answer){
+    return this.state.numbers.reduce((a, b) => {return a + b}, 0) === answer
   }
   render(){
     console.log(this.state);

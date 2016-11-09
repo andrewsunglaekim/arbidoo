@@ -14,7 +14,7 @@ class AnswerForm extends Component {
   }
   onSubmit(e){
     e.preventDefault()
-    let answer = this.state.answer
+    let answer = parseInt(this.state.answer, 10)
     this.props.submitAnswer(answer)
     this.setState({
       answer: ''
