@@ -7,8 +7,11 @@ class Quiz extends Component {
     return (
       <div>
         <Number number={5}/>
+        <div id="operator">+</div>
         <Number number={6}/>
-        <AnswerForm />
+        <AnswerForm
+          submitAnswer={this.props.submitAnswer}
+          />
       </div>
     )
   }

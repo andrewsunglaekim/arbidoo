@@ -6,10 +6,14 @@ class Arbidue extends Component {
     super()
     this.state = {}
   }
+  submitAnswer(answer){
+    console.log(answer)
+  }
   render(){
     return (
       <div>
-        <Quiz />
+        <Quiz
+          submitAnswer={this.submitAnswer.bind(this)}/>
       </div>
     )
   }
