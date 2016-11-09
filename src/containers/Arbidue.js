@@ -3,12 +3,12 @@ import Quiz from '../components/Quiz'
 import HighScoreForm from '../components/HighScoreForm'
 import Timer from '../components/Timer'
 import {Link} from 'react-router'
-import {browserHistory} from 'react-router'
-
+import Score from '../models/score'
 
 class Arbidue extends Component {
   constructor(props){
     super(props)
+		Score.getHighScore(100).then((res) => console.log(res))
     this.state = {
       counter:0,
       operator: "+",
@@ -42,7 +42,6 @@ class Arbidue extends Component {
     console.log(this.state);
   }
   updateGame(correct, counter){
-    let timerId = this.state.timerId
     let gameOver
     if(counter >= 3){
       gameOver = true
@@ -60,9 +59,18 @@ class Arbidue extends Component {
     return this.state.numbers.reduce((a, b) => {return a + b}, 0) === answer
   }
   submitUser(username){
-    // TODO: submit highscore to backend with name and time
-    console.log(username);
-    console.log(this.state)
+		let data = {
+      score: { 
+				username: username,
+				score: this.state.correct,
+				maxNum: this.props.params.size,
+				time: this.state.timer,
+				operator: this.state.operator
+      }
+		}
+		Score.addHighScore(data).then((res) =>{
+			console.log(res)
+    })
     this.reset(this.props.params.size)
   }
   reset(size){
@@ -75,12 +83,8 @@ class Arbidue extends Component {
     }, this.startTimer())
   }
   switchNums(num){
-    console.log(num)
 		this.stopTimer()
 		this.reset(num)
-  }
-  componentDidUpdate(){
-
   }
   render(){
     let links = [10, 50, 100, 500, 1000].map((num) => {
