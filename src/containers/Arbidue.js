@@ -14,7 +14,6 @@ class Arbidue extends Component {
       operator: "+",
       correct: 0,
       numbers: this.getRandomNumbers(this.props.params.size),
-      timerId: null,
       timer: 0
     }
     this.startTimer()
@@ -23,7 +22,7 @@ class Arbidue extends Component {
     return [Math.floor(Math.random() * range), Math.floor(Math.random() * range)]
   }
   startTimer(){
-		if(!this.state.timerId){
+		if(!this.timerId){
 			this.timerId = setInterval(()=>{
 				let timer = this.state.timer + 1
 				this.setState({
@@ -52,7 +51,7 @@ class Arbidue extends Component {
     this.setState({
       gameOver: gameOver,
       counter: counter,
-      numbers: this.getRandomNumbers(10),
+      numbers: this.getRandomNumbers(this.props.params.size),
       correct: correct
     })
 
@@ -64,7 +63,7 @@ class Arbidue extends Component {
     // TODO: submit highscore to backend with name and time
     console.log(username);
     console.log(this.state)
-    this.reset()
+    this.reset(this.props.params.size)
   }
   reset(size){
     this.setState({
