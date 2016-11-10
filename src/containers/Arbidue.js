@@ -18,14 +18,14 @@ class Arbidue extends Component {
 	componentDidMount(){
     this.fetchData()
 	}
-	fetchData(){
-    Score.getHighScore(this.props.params.size).then((res) => {
+	fetchData(num){
+		console.log("fetching")
+    Score.getHighScore(num || this.props.params.size).then((res) => {
 			console.log(res)
-			this.reset(this.props.params.size, res.data.leaderBoard)
+			this.reset(num || this.props.params.size, res.data.leaderBoard)
 		})
 	}
   reset(size, leaderBoard){
-		console.log(leaderBoard)
     this.setState({
       gameOver: false,
       counter: 0,
@@ -91,7 +91,7 @@ class Arbidue extends Component {
   }
   switchNums(num){
 		this.stopTimer()
-		this.reset(num)
+		this.fetchData(num)
   }
   render(){
     let links = [10, 50, 100, 500, 1000].map((num) => {
