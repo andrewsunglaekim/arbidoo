@@ -4,19 +4,36 @@ import HighScoreForm from '../components/HighScoreForm'
 import Timer from '../components/Timer'
 import {Link} from 'react-router'
 import Score from '../models/score'
+import LeaderBoard from '../components/LeaderBoard'
 
 class Arbidue extends Component {
   constructor(props){
     super(props)
-		Score.getHighScore(this.props.params.size).then((res) => console.log(res))
     this.state = {
-      counter:0,
       operator: "+",
-      correct: 0,
-      numbers: this.getRandomNumbers(this.props.params.size),
-      timer: 0
+      numbers: [],
+			timer: 0
     }
-    this.startTimer()
+  }
+	componentDidMount(){
+    this.fetchData()
+	}
+	fetchData(){
+    Score.getHighScore(this.props.params.size).then((res) => {
+			console.log(res)
+			this.reset(this.props.params.size, res.data.leaderBoard)
+		})
+	}
+  reset(size, leaderBoard){
+		console.log(leaderBoard)
+    this.setState({
+      gameOver: false,
+      counter: 0,
+      correct: 0,
+			numbers: this.getRandomNumbers(size),
+      timer: 0,
+			leaderBoard: leaderBoard
+    }, this.startTimer())
   }
   getRandomNumbers(range){
     return [Math.floor(Math.random() * range), Math.floor(Math.random() * range)]
@@ -39,7 +56,6 @@ class Arbidue extends Component {
     let correct = this.checkAnswer(answer) ? this.state.correct + 1 : this.state.correct
     let counter = this.state.counter + 1
     this.updateGame(correct, counter)
-    console.log(this.state);
   }
   updateGame(correct, counter){
     let gameOver
@@ -70,17 +86,8 @@ class Arbidue extends Component {
 		}
 		Score.addHighScore(data).then((res) =>{
 			console.log(res)
+      this.reset(this.props.params.size, res.data.leaderBoard)
     })
-    this.reset(this.props.params.size)
-  }
-  reset(size){
-    this.setState({
-      gameOver: false,
-      counter: 0,
-      correct: 0,
-      numbers: this.getRandomNumbers(size),
-      timer: 0
-    }, this.startTimer())
   }
   switchNums(num){
 		this.stopTimer()
@@ -104,6 +111,7 @@ class Arbidue extends Component {
       return (
         <div key="bob">
           <Timer time={this.state.timer}/>
+					<LeaderBoard leaderBoard={this.state.leaderBoard || []}/>
           <Quiz
             numbers={this.state.numbers}
             operator={this.state.operator}
