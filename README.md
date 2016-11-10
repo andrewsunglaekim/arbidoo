@@ -12,7 +12,7 @@ $ npm start
 
 ### Rails API
 
-Fork and clone `https://github.com/andrewsunglaekim/arbidue_score_api`
+Fork and clone `https://github.com/andrewsunglaekim/arbidoo_score_api`
 
 ```bash
 $ bundle install
