@@ -1,10 +1,12 @@
 import axios from 'axios'
 
 class Score {
-  static getHighScore(maxNum) {
+  static getHighScore(num) {
+		let score = {maxNum: num}
     let request = axios({
 			method: "get",
-			url: `http://localhost:4000/highscores/${maxNum}`
+			params: {score},
+			url: `http://localhost:4000/highscores`
     })
 		return request
   }

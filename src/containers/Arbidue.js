@@ -8,7 +8,7 @@ import Score from '../models/score'
 class Arbidue extends Component {
   constructor(props){
     super(props)
-		Score.getHighScore(100).then((res) => console.log(res))
+		Score.getHighScore(this.props.params.size).then((res) => console.log(res))
     this.state = {
       counter:0,
       operator: "+",
