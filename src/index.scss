@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito%7COpen+Sans');
+$green-blue: #36D1C4;
+$light-green: #A0EECC;
+$light-yellow: #FFF2BE;
+$dark-pink: #F6318C;
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: nunito, sans-serif;
+	background: $green-blue;
+  color: $light-yellow;
+}
+
+header {
+  width: 100%;
+  height: 10vh;
+  text-align: center;
+}
+
+h1 {
+  a {
+    color: $light-yellow;
+    text-decoration: none;
+    font-size: 3em;
+  }
+}
+
+main {
+  height: 70vh;
+}
+
+.quiz-container {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  margin: 50px auto;
+  border: 5px solid $light-green;
+  border-radius: 5%;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .number {
+    font-size: 8em;
+  }
+
+  .operator {
+    font-size: 4em;
+  }
+
+  .timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    font-size: 2em;
+    background: $light-yellow;
+    color: $green-blue;
+
+  }
+
+  input {
+    width: 300px;
+    border: 0;
+    outline: 0;
+    border-bottom: 10px solid $light-green;
+    background: transparent;
+    font-size: 8em;
+    font-family: nunito, sans-serrif;
+    color: $dark-pink;
+    text-align: center;
+
+  }
+}

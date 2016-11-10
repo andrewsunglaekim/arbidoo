@@ -5,7 +5,7 @@ class Header extends Component{
   render(){
     return (
       <header>
-        <h1><Link to={'/arbidue'}>Arbidue</Link></h1>
+        <h1><Link to={'/arbidue'}>ARBIDOO</Link></h1>
       </header>
     )
   }

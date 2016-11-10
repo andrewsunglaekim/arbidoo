@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Quiz from '../components/Quiz'
 import HighScoreForm from '../components/HighScoreForm'
-import Timer from '../components/Timer'
 import {Link} from 'react-router'
 import Score from '../models/score'
 import LeaderBoard from '../components/LeaderBoard'
@@ -49,7 +48,7 @@ class Arbidue extends Component {
 		}
   }
 	stopTimer(){
-  	clearInterval(this.timerId)		
+  	clearInterval(this.timerId)
 		this.timerId = null
 	}
   submitAnswer(answer){
@@ -76,7 +75,7 @@ class Arbidue extends Component {
   }
   submitUser(username){
 		let data = {
-      score: { 
+      score: {
 				username: username,
 				score: this.state.correct,
 				maxNum: this.props.params.size,
@@ -101,23 +100,25 @@ class Arbidue extends Component {
     })
     if(this.state.gameOver){
       return (
-        <div key="bob">
+        <div>
           <HighScoreForm
             numCorrect={this.state.correct}
             submitUser={this.submitUser.bind(this)}/>
         </div>
       )
     } else {
+      // TODO: put dis shit back in<LeaderBoard leaderBoard={this.state.leaderBoard || []}/>
       return (
-        <div key="bob">
-          <Timer time={this.state.timer}/>
-					<LeaderBoard leaderBoard={this.state.leaderBoard || []}/>
+        <main>
+
+
           <Quiz
+            time={this.state.timer}
             numbers={this.state.numbers}
             operator={this.state.operator}
             submitAnswer={this.submitAnswer.bind(this)}/>
           {links}
-        </div>
+        </main>
       )
     }
   }

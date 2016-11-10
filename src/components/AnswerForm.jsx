@@ -24,11 +24,12 @@ class AnswerForm extends Component {
     return(
       <div>
         <form onSubmit={e => this.onSubmit(e)}>
-          <input
-            onChange={e => this.onChange(e)}
-            placeholder='Answer Here'
-            type='text'
-            value={this.state.answer || ''} />
+          <div className="num-input">
+            <input
+              onChange={e => this.onChange(e)}
+              type='text'
+              value={this.state.answer || ''} />
+          </div>
         </form>
       </div>
     )

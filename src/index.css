@@ -1,5 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito%7COpen+Sans");
+* {
+  box-sizing: border-box; }
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-}
+  width: 100vw;
+  height: 100vh;
+  font-family: nunito, sans-serif;
+  background: #36D1C4;
+  color: #FFF2BE; }
+
+header {
+  width: 100%;
+  height: 10vh;
+  text-align: center; }
+
+h1 a {
+  color: #FFF2BE;
+  text-decoration: none;
+  font-size: 3em; }
+
+main {
+  height: 70vh; }
+
+.quiz-container {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  margin: 50px auto;
+  border: 5px solid #A0EECC;
+  border-radius: 5%;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; }
+  .quiz-container .number {
+    font-size: 8em; }
+  .quiz-container .operator {
+    font-size: 4em; }
+  .quiz-container .timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    font-size: 2em;
+    background: #FFF2BE;
+    color: #36D1C4; }
+  .quiz-container input {
+    width: 300px;
+    border: 0;
+    outline: 0;
+    border-bottom: 10px solid #A0EECC;
+    background: transparent;
+    font-size: 8em;
+    font-family: nunito, sans-serrif;
+    color: #F6318C;
+    text-align: center; }
+
+/*# sourceMappingURL=index.css.map */

@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class Timer extends Component {
   render(){
     return(
-      <div>
+      <div className="timer">
         {this.props.time}
       </div>
     )
