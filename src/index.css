@@ -63,4 +63,16 @@ main {
     color: #F6318C;
     text-align: center; }
 
+.transitioning {
+  -webkit-transition-duration: 1000ms;
+  transition-duration: 1000ms; }
+
+.off-screen-left {
+  transform: translate(-200%);
+  -webkit-transform: translate(-200%); }
+
+.off-screen-right {
+  transform: translate(140%);
+  -webkit-transform: translate(140%); }
+
 /*# sourceMappingURL=index.css.map */
