@@ -72,11 +72,11 @@ class Arbidue extends Component {
 			}, setTimeout(() => {
 				this.setState({ transitionClass: "transitioning"})
 			},100))
-		}, 400)
+		}, 300)
 	}
   updateGame(correct, counter){
     let gameOver
-    if(counter >= 3){
+    if(counter >= 5){
       gameOver = true
       this.stopTimer()
     }

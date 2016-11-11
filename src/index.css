@@ -64,8 +64,8 @@ main {
     text-align: center; }
 
 .transitioning {
-  -webkit-transition-duration: 1000ms;
-  transition-duration: 1000ms; }
+  -webkit-transition-duration: 800ms;
+  transition-duration: 800ms; }
 
 .off-screen-left {
   transform: translate(-200%);
