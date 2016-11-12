@@ -54,26 +54,8 @@ class Arbidue extends Component {
   submitAnswer(answer){
     let correct = this.checkAnswer(answer) ? this.state.correct + 1 : this.state.correct
     let counter = this.state.counter + 1
-		this.triggerSlide()
     this.updateGame(correct, counter)
   }
-	triggerSlide(){
-   this.slideOff(this.slideEnter)  
-	}
-	slideOff(callback){
-    this.setState({
-      transitionClass: "transitioning off-screen-left"
-		}, callback)
-	}
-	slideEnter(){
-    setTimeout(()=> {
-			this.setState({
-        transitionClass: "off-screen-right"
-			}, setTimeout(() => {
-				this.setState({ transitionClass: "transitioning"})
-			},100))
-		}, 300)
-	}
   updateGame(correct, counter){
     let gameOver
     if(counter >= 5){
@@ -131,7 +113,6 @@ class Arbidue extends Component {
 
 
           <Quiz
-					  transitionClass={this.state.transitionClass}
             time={this.state.timer}
             numbers={this.state.numbers}
             operator={this.state.operator}
