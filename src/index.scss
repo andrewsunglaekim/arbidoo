@@ -91,34 +91,33 @@ main {
   }
 }
 
-.leaderboard{
-  position: absolute;
-	bottom: 0;
+.scores{
+	position: fixed;
+	bottom: 0px;
 	width: 100%;
-	text-align: center;
+  text-align: center;
 
-	.scores{
-		@include flex;
-		position: fixed;
-		bottom: 0px;
+	.leaders{
+    @include flex;
+	}
+	
+	.score {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 
-		.score {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-
-			.position {
- 				height: 2em;
-				width: 2em;
-				border-radius: 50%;
-				background: $dark-pink;
-				@include flex;
+		.position {
+ 			height: 2em;
+			width: 2em;
+			border-radius: 50%;
+			background: $dark-pink;
+			@include flex;
 				
-			}
 		}
 	}
 }
+
 
 .transitioning {
   -webkit-transition-duration: 800ms;
@@ -136,5 +135,5 @@ main {
 }
 
 .scores.hidden {
-	bottom: -200px;
+	bottom: -100px;
 }

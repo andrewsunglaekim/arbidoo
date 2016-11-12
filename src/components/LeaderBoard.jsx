@@ -25,10 +25,10 @@ class LeaderBoard extends Component {
 			)
 		})
     return (
-      <div className="leaderboard">
-			  <h3 onClick={this.toggleScores.bind(this)}>The Leaderboard!</h3>
-				<div className={scoreClassName}>
-				  {scores}
+			<div className={scoreClassName}>
+		  	<h3 onClick={this.toggleScores.bind(this)}>The Leaderboard!</h3>
+				<div className='leaders'>
+			 	  {scores}
 				</div>
 			</div>
 		)
