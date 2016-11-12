@@ -11,9 +11,10 @@ class Score extends Component {
 		time = this.getHumanTime(time)
 		return (
       <div className='score'>
-				<span>{username}</span> |
-  			<span>{score}</span> | 
-				<span>{time}</span>
+				<div className='position'>{this.props.position}</div>
+				<div className='username'>{username}</div> 
+  			<div className='numScore'>{score}</div> 
+				<div className='time'>{time}</div>
 			</div>
 		)
 	}

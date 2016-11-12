@@ -18,7 +18,6 @@ class Arbidue extends Component {
     this.fetchData()
 	}
 	fetchData(num){
-		console.log("fetching")
     Score.getHighScore(num || this.props.params.size).then((res) => {
 			console.log(res)
 			this.reset(num || this.props.params.size, res.data.leaderBoard)
@@ -94,6 +93,7 @@ class Arbidue extends Component {
   }
   render(){
     let links = [10, 50, 100, 500, 1000].map((num) => {
+			// TODO: provide links for different potential modes
       return(
         <Link key={num} onClick={(e) => this.switchNums(num)} to={`/arbidue/${num}`}>{num}</Link>
       )
@@ -107,17 +107,14 @@ class Arbidue extends Component {
         </div>
       )
     } else {
-      // TODO: put dis shit back in<LeaderBoard leaderBoard={this.state.leaderBoard || []}/>
       return (
         <main>
-
-
           <Quiz
             time={this.state.timer}
             numbers={this.state.numbers}
             operator={this.state.operator}
             submitAnswer={this.submitAnswer.bind(this)}/>
-          {links}
+          <LeaderBoard leaderBoard={this.state.leaderBoard || []}/>
         </main>
       )
     }

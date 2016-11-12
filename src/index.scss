@@ -7,7 +7,15 @@ $dark-pink: #F6318C;
 * {
   box-sizing: border-box;
 }
+
+@mixin flex {
+  display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
 body {
+	position: relative;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -43,9 +51,7 @@ main {
   border: 5px solid $light-green;
   border-radius: 5%;
   padding: 0 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+	@include flex;
 
   .number {
     font-size: 8em;
@@ -85,6 +91,35 @@ main {
   }
 }
 
+.leaderboard{
+  position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+
+	.scores{
+		@include flex;
+		position: fixed;
+		bottom: 0px;
+
+		.score {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			.position {
+ 				height: 2em;
+				width: 2em;
+				border-radius: 50%;
+				background: $dark-pink;
+				@include flex;
+				
+			}
+		}
+	}
+}
+
 .transitioning {
   -webkit-transition-duration: 800ms;
 	transition-duration: 800ms;
@@ -98,4 +133,8 @@ main {
 .off-screen-right {
   transform: translate(140%);
 	-webkit-transform: translate(140%);
+}
+
+.scores.hidden {
+	bottom: -200px;
 }
