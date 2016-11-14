@@ -145,8 +145,8 @@ main {
 }
 
 .transitioning {
-  -webkit-transition-duration: 800ms;
-	transition-duration: 800ms;
+  -webkit-transition-duration: 700ms;
+	transition-duration: 700ms;
 }
 
 .off-screen-left {
@@ -155,8 +155,8 @@ main {
 }
 
 .off-screen-right {
-  transform: translate(140%);
-	-webkit-transform: translate(140%);
+  transform: translate(200%);
+	-webkit-transform: translate(200%);
 }
 
 .scores.hidden {

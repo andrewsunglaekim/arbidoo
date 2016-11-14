@@ -109,16 +109,16 @@ main {
   opacity: 1; }
 
 .transitioning {
-  -webkit-transition-duration: 800ms;
-  transition-duration: 800ms; }
+  -webkit-transition-duration: 700ms;
+  transition-duration: 700ms; }
 
 .off-screen-left {
   transform: translate(-200%);
   -webkit-transform: translate(-200%); }
 
 .off-screen-right {
-  transform: translate(140%);
-  -webkit-transform: translate(140%); }
+  transform: translate(200%);
+  -webkit-transform: translate(200%); }
 
 .scores.hidden {
   bottom: -90px; }
