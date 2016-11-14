@@ -32,6 +32,7 @@ class HighScoreForm extends Component {
         Way to go {this.state.username}! You got {this.props.numCorrect} correct!
         <form onSubmit={e => this.onSubmit(e)}>
           <input
+					  maxLength="5"
             onChange={e => this.onChange(e)}
             placeholder='Who are you? You magnificent beast'
             type='text'
