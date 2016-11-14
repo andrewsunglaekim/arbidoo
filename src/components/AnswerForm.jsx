@@ -26,6 +26,7 @@ class AnswerForm extends Component {
         <form onSubmit={e => this.onSubmit(e)}>
           <div className="num-input">
             <input
+						  maxLength="5"
               onChange={e => this.onChange(e)}
               type='text'
               value={this.state.answer || ''} />

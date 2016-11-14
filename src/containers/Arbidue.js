@@ -82,11 +82,14 @@ class Arbidue extends Component {
 				operator: this.state.operator
       }
 		}
-		// TODO: don't post data for scores of 0
-		Score.addHighScore(data).then((res) =>{
-			console.log(res)
-      this.reset(this.props.params.size, res.data.leaderBoard)
-    })
+		if(this.state.correct > 0) {
+			Score.addHighScore(data).then((res) =>{
+				console.log(res)
+   	   this.reset(this.props.params.size, res.data.leaderBoard)
+   	 })
+		} else {
+   	   this.reset(this.props.params.size, this.state.leaderBoard)
+		}
   }
   switchNums(num){
 		this.stopTimer()
