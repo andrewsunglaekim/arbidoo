@@ -118,6 +118,31 @@ main {
 	}
 }
 
+.high-score-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  width: 80%;
+  height: 100%;
+  margin: 50px auto;
+  border: 5px solid $light-green;
+  border-radius: 5%;
+  padding: 0 100px;
+	background: $light-yellow;
+	color: $green-blue;
+	transition: all 1s linear;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.high-score-container.hidden{
+}
+
+.high-score-container.showing{
+	visibility: visible;
+	opacity: 1;
+}
 
 .transitioning {
   -webkit-transition-duration: 800ms;

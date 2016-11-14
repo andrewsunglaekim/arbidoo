@@ -4,7 +4,8 @@ class HighScoreForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      username: ''
+      username: '',
+			className: 'high-score-container hidden'
     }
   }
   onChange(e){
@@ -20,9 +21,14 @@ class HighScoreForm extends Component {
       username: ''
     })
   }
+	componentDidMount(){
+			this.setState({
+    		className: "high-score-container showing"
+			})
+	}
   render(){
     return(
-      <div>
+      <div className={this.state.className}>
         Way to go {this.state.username}! You got {this.props.numCorrect} correct!
         <form onSubmit={e => this.onSubmit(e)}>
           <input

@@ -82,6 +82,7 @@ class Arbidue extends Component {
 				operator: this.state.operator
       }
 		}
+		// TODO: don't post data for scores of 0
 		Score.addHighScore(data).then((res) =>{
 			console.log(res)
       this.reset(this.props.params.size, res.data.leaderBoard)
@@ -100,11 +101,11 @@ class Arbidue extends Component {
     })
     if(this.state.gameOver){
       return (
-        <div>
+        <main>
           <HighScoreForm
             numCorrect={this.state.correct}
             submitUser={this.submitUser.bind(this)}/>
-        </div>
+        </main>
       )
     } else {
       return (
