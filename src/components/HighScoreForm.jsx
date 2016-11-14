@@ -15,11 +15,13 @@ class HighScoreForm extends Component {
   }
   onSubmit(e){
     e.preventDefault()
-    let username = this.state.username
-    this.props.submitUser(username)
-    this.setState({
-      username: ''
-    })
+		if(this.state.username){
+		  let username = this.state.username
+   	  this.props.submitUser(username)
+      this.setState({
+        username: ''
+      })
+	  }
   }
 	componentDidMount(){
 			this.setState({
