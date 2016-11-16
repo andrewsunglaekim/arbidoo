@@ -9,10 +9,8 @@ class Header extends Component{
     }
   }
   openLevelMenu(e){
-    let showLevelState = this.state.showLevels == "levels" ? "levels hidden" : "levels"
-    this.setState({
-      showLevels: showLevelState
-    })
+    let showLevelClass = this.props.showLevelClass == "levels" ? "levels hidden" : "levels"
+    this.props.sendLevelClass(showLevelClass)
   }
   render(){
     return (

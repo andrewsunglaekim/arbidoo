@@ -4,6 +4,8 @@ import HighScoreForm from '../components/HighScoreForm'
 import {Link} from 'react-router'
 import Score from '../models/score'
 import LeaderBoard from '../components/LeaderBoard'
+import Header from '../components/Header'
+import LevelSelect from '../components/LevelSelect'
 
 class Arbidue extends Component {
   constructor(props){
@@ -11,7 +13,8 @@ class Arbidue extends Component {
     this.state = {
       operator: "+",
       numbers: [],
-			timer: 0
+			timer: 0,
+      showLevelClass: ""
     }
   }
 	componentDidMount(){
@@ -95,13 +98,15 @@ class Arbidue extends Component {
 		this.stopTimer()
 		this.fetchData(num)
   }
+  selectLevel(level){
+    this.fetchData(level)
+  }
+  onSendLevel(className){
+    this.setState(
+      {showLevelClass: className}
+    )
+  }
   render(){
-    let links = [10, 50, 100, 500, 1000].map((num) => {
-			// TODO: provide links for different potential modes
-      return(
-        <Link key={num} onClick={(e) => this.switchNums(num)} to={`/arbidue/${num}`}>{num}</Link>
-      )
-    })
     if(this.state.gameOver){
       return (
         <main>
@@ -112,14 +117,22 @@ class Arbidue extends Component {
       )
     } else {
       return (
-        <main>
-          <Quiz
-            time={this.state.timer}
-            numbers={this.state.numbers}
-            operator={this.state.operator}
-            submitAnswer={this.submitAnswer.bind(this)}/>
-          <LeaderBoard leaderBoard={this.state.leaderBoard || []}/>
-        </main>
+        <div>
+          <Header
+            showLevelClass={this.state.showLevelClass}
+            sendLevelClass={this.onSendLevel.bind(this)}/>
+          <LevelSelect
+            showLevelClass={this.state.showLevelClass}
+            onSelectLevel={this.selectLevel.bind(this)}/>
+          <main>
+            <Quiz
+              time={this.state.timer}
+              numbers={this.state.numbers}
+              operator={this.state.operator}
+              submitAnswer={this.submitAnswer.bind(this)}/>
+            <LeaderBoard leaderBoard={this.state.leaderBoard || []}/>
+          </main>
+        </div>
       )
     }
   }
