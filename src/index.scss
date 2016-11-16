@@ -14,6 +14,15 @@ $dark-pink: #F6318C;
 	justify-content: space-around;
 }
 
+@mixin mainContent{
+  width: 80%;
+  height: 100%;
+  margin: 50px auto;
+  border: 5px solid $light-green;
+  border-radius: 5%;
+  padding: 0 100px;
+}
+
 body {
 	position: relative;
   margin: 0;
@@ -81,12 +90,7 @@ main {
 
 .quiz-container {
   position: relative;
-  width: 80%;
-  height: 100%;
-  margin: 50px auto;
-  border: 5px solid $light-green;
-  border-radius: 5%;
-  padding: 0 100px;
+  @include mainContent;
 	@include flex;
 
   .number {
@@ -155,16 +159,11 @@ main {
 }
 
 .high-score-container{
+  @include mainContent;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-  width: 80%;
-  height: 100%;
-  margin: 50px auto;
-  border: 5px solid $light-green;
-  border-radius: 5%;
-  padding: 0 100px;
 	background: $light-yellow;
 	color: $green-blue;
 	transition: all 1s linear;
