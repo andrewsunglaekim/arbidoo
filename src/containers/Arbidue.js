@@ -33,7 +33,8 @@ class Arbidue extends Component {
       correct: 0,
 			numbers: this.getRandomNumbers(size),
       timer: 0,
-			leaderBoard: leaderBoard
+			leaderBoard: leaderBoard,
+      showLevelClass: "levels hidden"
     }, this.startTimer())
   }
   getRandomNumbers(range){
